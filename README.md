@@ -1,4 +1,6 @@
-# Importing dynamic components in Reactjs
+# Importing dynamic files in component
+
+## How to add dynamic files in a component
 
 This is a simple React application that demonstrates how to use dynamic components in a React project. It dynamically loads components from a specific directory and displays them on the page.
 
@@ -32,7 +34,7 @@ Then import `require-context` in your file using the following code:
 
 ```
 const requireModule = require.context('./components', false, /\.js$/);
-```
+``` 
 
 Here `./components` is the path of the directory, `false` means not to search subdirectories and `/\.js$/` is used to match all files with a .js extension.
 
