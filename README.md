@@ -1,6 +1,6 @@
 # Importing dynamic files in component
 
-## How to add dynamic files in a component
+## How to add dynamic files in a component from folder
 
 This is a simple React application that demonstrates how to use dynamic components in a React project. It dynamically loads components from a specific directory and displays them on the page.
 
