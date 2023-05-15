@@ -22,11 +22,46 @@ This should start the app on `http://localhost:3000/` in your default browser.
 
 ## How it Works
 
-The app uses `require.context` to load all components from the `./components` directory. It then stores the components in an object called `componentNames`.
+The app uses `require.context` to load all components from the `./components` directory. It then stores the components in an object called `componentNames`. To install `require.context` use the following command:
+
+```
+npm i --save require-context
+```
+
+Then import `require-context` in your file using the following code:
+
+```
+const requireModule = require.context('./components', false, /\.js$/);
+```
+
+Here `./components` is the path of the directory, `false` means not to search subdirectories and `/\.js$/` is used to match all files with a .js extension.
 
 The app also has an array of objects called `records` that contain information about the components to be displayed on the page. Each object in the `records` array has a `key` that corresponds to the name of a component in the `componentNames` object.
 
+```
+ const [records, setRecords] = useState([
+    { key: "component1", name: "Component 1", data: [] },
+    { key: "component2", name: "Component 2", data: [] },
+    { key: "component3", name: "Component 3", data: [] },
+    { key: "component4", name: "Component 4", data: [] }
+  ])
+```
+
 In the `handleDynamicComponent` function, the app maps over the `records` array and dynamically assigns each component to the `component` property of the object. This is achieved by getting the component from the `componentNames` object using its corresponding key.
+
+```
+ const updateRecords= records.length > 0 && records.map((ele) => {
+      const DynamicComponent = componentMap[ele.key]
+      ele.component = (
+        <DynamicComponent
+          data={ele.data}
+          key={ele.data}
+        />
+      );
+      return{...ele};
+    })
+    setRecords(updateRecords);
+```
 
 Finally, the app displays the components on the page by mapping over the `records` array and rendering each component in a `card` element.
 
